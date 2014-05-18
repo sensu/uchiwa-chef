@@ -1,12 +1,4 @@
-# uchiwa cookbook
-
-# Requirements
-
-# Usage
-
-# Attributes
-
-# Recipes
+Installs and configures [Uchiwa](https://github.com/palourde/uchiwa). A NodeJS dashboard for Sensu.
 
 # Author
 
