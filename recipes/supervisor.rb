@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: uchiwa
-# Recipe:: default
+# Recipe:: supervisor
 #
 # Copyright (C) 2014 Jean-Francois Theroux
 #
@@ -16,30 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-user node['uchiwa']['user'] do
-  system true
-  home node['uchiwa']['base_dir']
-  shell '/bin/false'
-end
+include_recipe 'supervisor'
 
-include_recipe 'uchiwa::install'
-
-# Config
-file "#{node['uchiwa']['base_dir']}/config.js.example" do
-  action :delete
-end
-
-template "#{node['uchiwa']['base_dir']}/config.js" do
+supervisor_service 'uchiwa' do
+  command '/usr/local/bin/node app.js'
+  directory node['uchiwa']['base_dir']
   user node['uchiwa']['user']
-  group node['uchiwa']['group']
-  mode 0640
+  stdout_logfile "#{node['uchiwa']['log_dir']}/uchiwa.log"
 end
-
-# Logs
-directory node['uchiwa']['log_dir'] do
-  user node['uchiwa']['user']
-  group node['uchiwa']['group']
-end
-
-# Init
-include_recipe "uchiwa::supervisor"

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: uchiwa
-# Recipe:: default
+# Recipe:: install
 #
 # Copyright (C) 2014 Jean-Francois Theroux
 #
@@ -16,30 +16,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-user node['uchiwa']['user'] do
-  system true
-  home node['uchiwa']['base_dir']
-  shell '/bin/false'
-end
+# Hipster stuff
+include_recipe 'nodejs::install_from_binary'
+include_recipe 'nodejs::npm'
 
-include_recipe 'uchiwa::install'
+# Use the source Luke!
+package 'git'
 
-# Config
-file "#{node['uchiwa']['base_dir']}/config.js.example" do
-  action :delete
-end
-
-template "#{node['uchiwa']['base_dir']}/config.js" do
-  user node['uchiwa']['user']
-  group node['uchiwa']['group']
-  mode 0640
-end
-
-# Logs
-directory node['uchiwa']['log_dir'] do
+directory "#{node['uchiwa']['base_dir']}-#{node['uchiwa']['version']}" do
   user node['uchiwa']['user']
   group node['uchiwa']['group']
 end
 
-# Init
-include_recipe "uchiwa::supervisor"
+git "#{node['uchiwa']['base_dir']}-#{node['uchiwa']['version']}" do
+  repository 'https://github.com/palourde/uchiwa.git'
+  reference node['uchiwa']['version']
+  user node['uchiwa']['user']
+  group node['uchiwa']['group']
+  notifies :run, 'execute[run npm install]'
+end
+
+link node['uchiwa']['base_dir'] do
+  to "#{node['uchiwa']['base_dir']}-#{node['uchiwa']['version']}"
+end
+
+execute 'run npm install' do
+  action :nothing
+  command 'npm install'
+  cwd "#{node['uchiwa']['base_dir']}-#{node['uchiwa']['version']}"
+end
