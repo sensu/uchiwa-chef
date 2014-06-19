@@ -1,4 +1,4 @@
-default['uchiwa']['version'] = '0.0.2'
+default['uchiwa']['version'] = '0.1.3'
 default['uchiwa']['base_dir'] = '/opt/uchiwa'
 default['uchiwa']['log_dir'] = '/var/log/uchiwa'
 default['uchiwa']['user'] = 'uchiwa'
