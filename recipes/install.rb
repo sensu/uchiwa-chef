@@ -18,7 +18,6 @@
 
 # Hipster stuff
 include_recipe 'nodejs::install_from_binary'
-include_recipe 'nodejs::npm'
 
 # Use the source Luke!
 package 'git'
