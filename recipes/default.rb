@@ -16,30 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-user node['uchiwa']['user'] do
-  system true
-  home node['uchiwa']['base_dir']
-  shell '/bin/false'
-end
-
 include_recipe 'uchiwa::install'
 
-# Config
-file "#{node['uchiwa']['base_dir']}/config.js.example" do
-  action :delete
-end
-
-template "#{node['uchiwa']['base_dir']}/config.js" do
+template '/etc/sensu/uchiwa.js' do
   user node['uchiwa']['user']
   group node['uchiwa']['group']
   mode 0640
+  notifies :restart, 'service[uchiwa]'
 end
 
-# Logs
-directory node['uchiwa']['log_dir'] do
-  user node['uchiwa']['user']
-  group node['uchiwa']['group']
+service 'uchiwa' do
+  action [:enable, :start]
 end
-
-# Init
-include_recipe "uchiwa::supervisor"
