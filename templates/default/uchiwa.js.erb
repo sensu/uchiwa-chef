@@ -1,5 +1,6 @@
 module.exports = {
   sensu: {
+    name: 'Sensu',
     host: '<%= node['uchiwa']['api_server'] %>',
     ssl: false,
     port: <%= node['uchiwa']['api_port'] %>,
@@ -11,6 +12,7 @@ module.exports = {
   uchiwa: {
     user: '',
     pass: '',
+    stats: 10,
     refresh: 10000
   }
 }
