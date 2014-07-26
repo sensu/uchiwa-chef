@@ -16,31 +16,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Hipster stuff
-include_recipe 'nodejs::install_from_binary'
+case node['platform_family']
+  when 'debian'
+    apt_repository 'sensu' do
+      uri node['uchiwa']['apt_repo_url']
+      key "#{node['uchiwa']['apt_repo_url']}/pubkey.gpg"
+      distribution 'sensu'
+      components node['uchiwa']['use_unstable_repo'] ? ["unstable"] : ["main"]
+    end
+  when 'rhel'
+    branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
+    version = node['platform_version'].to_i
 
-# Use the source Luke!
-package 'git'
-
-directory "#{node['uchiwa']['base_dir']}-#{node['uchiwa']['version']}" do
-  user node['uchiwa']['user']
-  group node['uchiwa']['group']
+    yum_repository 'uchiwa' do
+      description 'Uchiwa repository'
+      baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/#{version}/$basearch/"
+      gpgcheck false
+    end
+  else
+    raise "Unsupported platform family #{node['platform_family']}. Aborting."
 end
 
-git "#{node['uchiwa']['base_dir']}-#{node['uchiwa']['version']}" do
-  repository 'https://github.com/palourde/uchiwa.git'
-  reference node['uchiwa']['version']
-  user node['uchiwa']['user']
-  group node['uchiwa']['group']
-  notifies :run, 'execute[run npm install]'
-end
-
-link node['uchiwa']['base_dir'] do
-  to "#{node['uchiwa']['base_dir']}-#{node['uchiwa']['version']}"
-end
-
-execute 'run npm install' do
-  action :nothing
-  command 'npm install'
-  cwd "#{node['uchiwa']['base_dir']}-#{node['uchiwa']['version']}"
+package 'uchiwa' do
+  version node['uchiwa']['version']
 end
