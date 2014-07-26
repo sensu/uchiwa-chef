@@ -1,4 +1,5 @@
 .vagrant
+Berksfile
 Berksfile.lock
 *~
 *#
