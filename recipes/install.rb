@@ -26,11 +26,13 @@ case node['platform_family']
     end
   when 'rhel'
     branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
-    version = node['platform_version'].to_i
+
+    # Packages are only built for Centos/RHEL 6
+    raise "Unsupported platform version #{version}. Aborting." if node['platform_version'].to_i < 6
 
     yum_repository 'uchiwa' do
       description 'Uchiwa repository'
-      baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/#{version}/$basearch/"
+      baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/6/$basearch/"
       gpgcheck false
     end
   else
