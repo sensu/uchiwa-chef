@@ -12,6 +12,7 @@ These plateforms have been tested successfully.
 + Smaller commits are better if we need to cherry pick.
 + Make sure foodcritic runs without errors.
 + Make sure 'knife cookbook test' runs without errors.
++ Make sure 'kitchen test' runs without errors.
 
 # Author
 
