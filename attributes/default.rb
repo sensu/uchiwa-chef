@@ -15,9 +15,11 @@ default['uchiwa']['settings']['bind_address'] = '0.0.0.0'
 default['uchiwa']['settings']['bind_port'] = 3000
 
 # APIs Settings
-default['uchiwa']['api'] = {
-  'name' => 'Sensu',
-  'host' => '127.0.0.1',
-  'ssl' => false,
-  'timeout' => 5000
-}
+default['uchiwa']['api'] = [
+  {
+    'name' => 'Sensu',
+    'host' => '127.0.0.1',
+    'ssl' => false,
+    'timeout' => 5000
+  }
+]
