@@ -13,6 +13,7 @@ These plateforms have been tested successfully.
 + Make sure foodcritic runs without errors.
 + Make sure 'knife cookbook test' runs without errors.
 + Make sure 'kitchen test' runs without errors.
++ Write tests for your change.
 
 # Author
 
