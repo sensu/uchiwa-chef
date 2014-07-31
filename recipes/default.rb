@@ -18,11 +18,19 @@
 
 include_recipe 'uchiwa::install'
 
-template '/etc/sensu/uchiwa.js' do
-  user node['uchiwa']['user']
+# Generate config file
+settings = Hash.new
+node['uchiwa']['settings'].each do |k,v|
+  settings[k] = v
+end
+config = { "uchiwa" => settings, "sensu" => node['uchiwa']['api'] }
+
+template '/etc/sensu/uchiwa.json' do
+  user node['uchiwa']['owner']
   group node['uchiwa']['group']
   mode 0640
   notifies :restart, 'service[uchiwa]'
+  variables({ :config => JSON.pretty_generate(config) })
 end
 
 service 'uchiwa' do
