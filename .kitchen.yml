@@ -16,3 +16,20 @@ suites:
     run_list:
       - recipe[uchiwa::default]
     attributes:
+      uchiwa:
+        api: [
+          {
+            name: sensu1,
+            host: api1.example.com,
+            port: 4567,
+            ssl: false,
+            timeout: 5000
+          },
+          {
+            name: sensu2,
+            host: api2.example.com,
+            port: 4567,
+            ssl: false,
+            timeout: 5000
+          }
+        ]
