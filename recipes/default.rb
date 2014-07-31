@@ -16,30 +16,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-user node['uchiwa']['user'] do
-  system true
-  home node['uchiwa']['base_dir']
-  shell '/bin/false'
-end
-
 include_recipe 'uchiwa::install'
 
-# Config
-file "#{node['uchiwa']['base_dir']}/config.js.example" do
-  action :delete
+# Generate config file
+settings = Hash.new
+node['uchiwa']['settings'].each do |k,v|
+  settings[k] = v
 end
+config = { "uchiwa" => settings, "sensu" => node['uchiwa']['api'] }
 
-template "#{node['uchiwa']['base_dir']}/config.js" do
-  user node['uchiwa']['user']
+template '/etc/sensu/uchiwa.json' do
+  user node['uchiwa']['owner']
   group node['uchiwa']['group']
   mode 0640
+  notifies :restart, 'service[uchiwa]'
+  variables({ :config => JSON.pretty_generate(config) })
 end
 
-# Logs
-directory node['uchiwa']['log_dir'] do
-  user node['uchiwa']['user']
-  group node['uchiwa']['group']
+service 'uchiwa' do
+  action [:enable, :start]
 end
-
-# Init
-include_recipe "uchiwa::supervisor"

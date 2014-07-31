@@ -6,11 +6,30 @@ provisioner:
   name: chef_solo
 
 platforms:
+  - name: centos-6.5
+  - name: centos-7.0
   - name: ubuntu-12.04
-  - name: centos-6.4
+  - name: ubuntu-14.04
 
 suites:
   - name: default
     run_list:
       - recipe[uchiwa::default]
     attributes:
+      uchiwa:
+        api: [
+          {
+            name: sensu1,
+            host: api1.example.com,
+            port: 4567,
+            ssl: false,
+            timeout: 5000
+          },
+          {
+            name: sensu2,
+            host: api2.example.com,
+            port: 4567,
+            ssl: false,
+            timeout: 5000
+          }
+        ]
