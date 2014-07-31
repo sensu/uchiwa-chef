@@ -5,6 +5,7 @@ default['uchiwa']['yum_repo_url'] = "http://repos.sensuapp.org"
 default['uchiwa']['use_unstable_repo'] = false
 default['uchiwa']['owner'] = 'uchiwa'
 default['uchiwa']['group'] = 'uchiwa'
+default['uchiwa']['add_repo'] = true
 
 # Uchiwa Settings
 default['uchiwa']['settings']['user'] = 'admin'

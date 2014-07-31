@@ -23,6 +23,7 @@ case node['platform_family']
       key "#{node['uchiwa']['apt_repo_url']}/pubkey.gpg"
       distribution 'sensu'
       components node['uchiwa']['use_unstable_repo'] ? ["unstable"] : ["main"]
+      only_if { node['uchiwa']['add_repo'] }
     end
   when 'rhel'
     branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
@@ -34,6 +35,7 @@ case node['platform_family']
       description 'Uchiwa repository'
       baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/6/$basearch/"
       gpgcheck false
+      only_if { node['uchiwa']['add_repo'] }
     end
   else
     raise "Unsupported platform family #{node['platform_family']}. Aborting."
