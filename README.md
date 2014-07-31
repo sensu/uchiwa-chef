@@ -1,4 +1,4 @@
-Installs and configures [Uchiwa](https://github.com/sensu/uchiwa). A NodeJS dashboard for Sensu. This cookbook uses the omnibus packages.
+Installs and configures [Uchiwa](https://github.com/sensu/uchiwa). A NodeJS dashboard for [Sensu](http://sensuapp.org/). This cookbook uses the omnibus packages.
 
 # Supported plateforms
 
