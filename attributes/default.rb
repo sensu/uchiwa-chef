@@ -12,8 +12,8 @@ default['uchiwa']['settings']['user'] = 'admin'
 default['uchiwa']['settings']['pass'] = 'supersecret'
 default['uchiwa']['settings']['stats'] = 10
 default['uchiwa']['settings']['refresh'] = 10000
-default['uchiwa']['settings']['bind_address'] = '0.0.0.0'
-default['uchiwa']['settings']['bind_port'] = 3000
+default['uchiwa']['settings']['host'] = '0.0.0.0'
+default['uchiwa']['settings']['port'] = 3000
 
 # APIs Settings
 default['uchiwa']['api'] = [
