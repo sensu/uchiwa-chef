@@ -42,5 +42,6 @@ case node['platform_family']
 end
 
 package 'uchiwa' do
+  options '--nogpgcheck' if node['platform_family'] == 'rhel'
   version node['uchiwa']['version']
 end
