@@ -8,3 +8,14 @@ version          '0.3.2'
 
 depends          'yum'
 depends          'apt'
+
+%w[
+  ubuntu
+  debian
+  centos
+  redhat
+  fedora
+  amazon
+].each do |os|
+  supports os
+end
