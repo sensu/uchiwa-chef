@@ -20,6 +20,8 @@ default['uchiwa']['api'] = [
   {
     'name' => 'Sensu',
     'host' => '127.0.0.1',
+    'port' => 4567,
+    'path' => '',
     'ssl' => false,
     'timeout' => 5000
   }
