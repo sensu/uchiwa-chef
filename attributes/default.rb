@@ -1,10 +1,14 @@
 # Global
 default['uchiwa']['version'] = '0.1.7-1'
-default['uchiwa']['apt_repo_url'] = "http://repos.sensuapp.org/apt"
-default['uchiwa']['yum_repo_url'] = "http://repos.sensuapp.org"
+default['uchiwa']['install_method'] = 'package'
+default['uchiwa']['apt_repo_url'] = 'http://repos.sensuapp.org/apt'
+default['uchiwa']['yum_repo_url'] = 'http://repos.sensuapp.org'
 default['uchiwa']['use_unstable_repo'] = false
+default['uchiwa']['source_url'] = 'https://github.com/sensu/uchiwa.git'
 default['uchiwa']['owner'] = 'uchiwa'
 default['uchiwa']['group'] = 'uchiwa'
+default['uchiwa']['sensu_homedir'] = '/etc/sensu'
+default['uchiwa']['uchiwa_homedir'] = '/opt/uchiwa/usr/src/uchiwa'
 default['uchiwa']['add_repo'] = true
 
 # Uchiwa Settings
