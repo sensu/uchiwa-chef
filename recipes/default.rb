@@ -16,9 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-puts "TEST"
-puts node['uchiwa']['install_method']
-
 include_recipe "uchiwa::#{node['uchiwa']['install_method']}"
 
 # Generate config file
