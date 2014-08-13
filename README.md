@@ -6,7 +6,7 @@ The cookbook supports the following installation methods:
 
 + package
 + source
-+ 
+ 
 # Supported plateforms
 
 These plateforms have been tested successfully.
