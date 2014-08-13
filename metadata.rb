@@ -8,6 +8,7 @@ version          '0.3.4'
 
 depends          'yum'
 depends          'apt'
+depends          'nodejs'
 
 %w[
   ubuntu

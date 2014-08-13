@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'uchiwa::install'
+include_recipe "uchiwa::#{node['uchiwa']['install_method']}"
 
 # Generate config file
 settings = Hash.new
@@ -25,7 +25,7 @@ node['uchiwa']['settings'].each do |k,v|
 end
 config = { "uchiwa" => settings, "sensu" => node['uchiwa']['api'] }
 
-template '/etc/sensu/uchiwa.json' do
+template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
   user node['uchiwa']['owner']
   group node['uchiwa']['group']
   mode 0640
