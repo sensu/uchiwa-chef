@@ -1,8 +1,7 @@
 language: ruby
-install: gem install foodcritic rubocop berkshelf kitchen-vagrant
 rvm:
-  - 1.9.3
   - 2.0.0
+install: gem install foodcritic rubocop
 script:
- - bundle exec foodcritic .
- - bundle exec rubocop
+ - foodcritic -f any .
+ - rubocop
