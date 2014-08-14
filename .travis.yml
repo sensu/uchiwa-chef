@@ -1,4 +1,5 @@
 language: ruby
+install: gem install foodcritic rubocop
 rvm:
   - 1.9.3
   - 2.0.0
