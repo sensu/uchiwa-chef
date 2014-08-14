@@ -17,28 +17,28 @@
 # limitations under the License.
 
 case node['platform_family']
-  when 'debian'
-    apt_repository 'sensu' do
-      uri node['uchiwa']['apt_repo_url']
-      key "#{node['uchiwa']['apt_repo_url']}/pubkey.gpg"
-      distribution 'sensu'
-      components node['uchiwa']['use_unstable_repo'] ? ["unstable"] : ["main"]
-      only_if { node['uchiwa']['add_repo'] }
-    end
-  when 'rhel'
-    branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
+when 'debian'
+  apt_repository 'sensu' do
+    uri node['uchiwa']['apt_repo_url']
+    key "#{node['uchiwa']['apt_repo_url']}/pubkey.gpg"
+    distribution 'sensu'
+    components node['uchiwa']['use_unstable_repo'] ? ['unstable'] : ['main']
+    only_if { node['uchiwa']['add_repo'] }
+  end
+when 'rhel'
+  branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
 
-    # Packages are only built for Centos/RHEL 6
-    raise "Unsupported platform version #{version}. Aborting." if node['platform_version'].to_i < 6
+  # Packages are only built for Centos/RHEL 6
+  raise "Unsupported platform version #{version}. Aborting." if node['platform_version'].to_i < 6
 
-    yum_repository 'uchiwa' do
-      description 'Uchiwa repository'
-      baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/6/$basearch/"
-      gpgcheck false
-      only_if { node['uchiwa']['add_repo'] }
-    end
-  else
-    raise "Unsupported platform family #{node['platform_family']}. Aborting."
+  yum_repository 'uchiwa' do
+    description 'Uchiwa repository'
+    baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/6/$basearch/"
+    gpgcheck false
+    only_if { node['uchiwa']['add_repo'] }
+  end
+else
+  raise "Unsupported platform family #{node['platform_family']}. Aborting."
 end
 
 package 'uchiwa' do

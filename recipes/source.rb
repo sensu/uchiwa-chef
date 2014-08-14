@@ -26,7 +26,7 @@ user node['uchiwa']['owner'] do
   system true
 end
 
-[ node['uchiwa']['sensu_homedir'], node['uchiwa']['uchiwa_homedir'] ].each do |path|
+[node['uchiwa']['sensu_homedir'], node['uchiwa']['uchiwa_homedir']].each do |path|
   directory path do
     owner node['uchiwa']['owner']
     group node['uchiwa']['group']
@@ -35,8 +35,8 @@ end
   end
 end
 
-execute "install_bower" do
-  command "npm install -g bower"
+execute 'install_bower' do
+  command 'npm install -g bower'
   not_if "npm ls -g 2> /dev/null | grep 'bower'"
 end
 
@@ -44,16 +44,16 @@ git node['uchiwa']['uchiwa_homedir'] do
   repository node['uchiwa']['source_url']
   revision node['uchiwa']['version']
   action :sync
-  notifies :run, "execute[install_dependencies]"
+  notifies :run, 'execute[install_dependencies]'
 end
 
-execute "install_dependencies" do
+execute 'install_dependencies' do
   cwd node['uchiwa']['uchiwa_homedir']
-  command "npm install --production --unsafe-perm"
+  command 'npm install --production --unsafe-perm'
   action :nothing
 end
 
-template "/etc/init.d/uchiwa" do
-  source "uchiwa-init.erb"
+template '/etc/init.d/uchiwa' do
+  source 'uchiwa-init.erb'
   mode 0755
 end
