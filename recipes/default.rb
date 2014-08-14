@@ -19,7 +19,7 @@
 include_recipe "uchiwa::#{node['uchiwa']['install_method']}"
 
 # Generate config file
-settings = []
+settings = {}
 node['uchiwa']['settings'].each do |k, v|
   settings[k] = v
 end
