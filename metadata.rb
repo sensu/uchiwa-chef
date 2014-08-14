@@ -10,13 +10,13 @@ depends          'yum'
 depends          'apt'
 depends          'nodejs'
 
-%w[
+%w(
   ubuntu
   debian
   centos
   redhat
   fedora
   amazon
-].each do |os|
+).each do |os|
   supports os
 end
