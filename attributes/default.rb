@@ -11,6 +11,9 @@ default['uchiwa']['sensu_homedir'] = '/etc/sensu'
 default['uchiwa']['uchiwa_homedir'] = '/opt/uchiwa/usr/src/uchiwa'
 default['uchiwa']['add_repo'] = true
 
+# Set to false if you want to wrap this with runit or another process monitor
+default['uchiwa']['manage_service'] = true
+
 # Uchiwa Settings
 default['uchiwa']['settings']['user'] = 'admin'
 default['uchiwa']['settings']['pass'] = 'supersecret'

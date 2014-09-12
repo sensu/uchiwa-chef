@@ -33,6 +33,8 @@ template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
   variables(:config => JSON.pretty_generate(config))
 end
 
-service 'uchiwa' do
-  action [:enable, :start]
+if node['uchiwa']['manage_service']
+  service 'uchiwa' do
+    action [:enable, :start]
+  end
 end
