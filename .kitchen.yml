@@ -12,7 +12,7 @@ platforms:
   - name: ubuntu-14.04
 
 suites:
-  - name: default
+  - name: package
     run_list:
       - recipe[uchiwa::default]
     attributes:
@@ -34,6 +34,7 @@ suites:
           }
         ]
         install_method: package
+
   - name: source
     run_list:
       - recipe[uchiwa::default]
@@ -56,4 +57,4 @@ suites:
           }
         ]
         install_method: source
-        version: 0.2.1
+        version: 0.2.3

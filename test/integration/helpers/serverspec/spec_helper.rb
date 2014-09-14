@@ -1,10 +1,8 @@
-require 'spec_helper'
+require 'serverspec'
+include Serverspec::Helper::Exec
+include SpecInfra::Helper::DetectOS
 
-describe 'Uchiwa' do
-  it 'Install the package uchiwa' do
-    expect(package 'uchiwa').to be_installed
-  end
-
+shared_examples_for 'uchiwa' do
   it 'Enables and starts the Uchiwa service' do
     expect(service 'uchiwa').to be_enabled
     expect(service 'uchiwa').to be_running
