@@ -58,3 +58,31 @@ suites:
         ]
         install_method: source
         version: 0.2.3
+
+  - name: disabled_service
+    excludes:
+      - centos-7.0
+      - ubuntu-12.04
+      - ubuntu-14.04
+    run_list:
+      - recipe[uchiwa::default]
+    attributes:
+      uchiwa:
+        api: [
+          {
+            name: sensu1,
+            host: api1.example.com,
+            port: 4567,
+            ssl: false,
+            timeout: 5000
+          },
+          {
+            name: sensu2,
+            host: api2.example.com,
+            port: 4567,
+            ssl: false,
+            timeout: 5000
+          }
+        ]
+        install_method: package
+        manage_service: false

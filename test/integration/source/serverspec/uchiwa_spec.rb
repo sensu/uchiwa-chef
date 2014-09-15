@@ -25,5 +25,7 @@ describe 'Installation' do
 end
 
 describe 'Configuration' do
-  it_behaves_like 'uchiwa'
+  it_behaves_like 'service'
+  it_behaves_like 'port'
+  it_behaves_like 'configuration file'
 end
