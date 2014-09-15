@@ -29,12 +29,10 @@ template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
   user node['uchiwa']['owner']
   group node['uchiwa']['group']
   mode 0640
-  notifies :restart, 'service[uchiwa]'
+  notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
   variables(:config => JSON.pretty_generate(config))
 end
 
-if node['uchiwa']['manage_service']
-  service 'uchiwa' do
-    action [:enable, :start]
-  end
+service 'uchiwa' do
+  action [:enable, :start] if node['uchiwa']['manage_service']
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Uchiwa' do
+describe 'Installation' do
   it 'Installs dependencies' do
     expect(package 'git').to be_installed
     expect(package 'nodejs').to be_installed
@@ -22,20 +22,10 @@ describe 'Uchiwa' do
   it 'Install init script' do
     expect(file '/etc/init.d/uchiwa').to be_file
   end
+end
 
-  it 'Enables and starts the Uchiwa service' do
-    expect(service 'uchiwa').to be_enabled
-    expect(service 'uchiwa').to be_running
-  end
-
-  it 'Listens on port TCP/3000' do
-    expect(port 3000).to be_listening 'tcp'
-  end
-
-  it 'Has a configuration file' do
-    expect(file '/etc/sensu/uchiwa.json').to be_file
-    expect(file '/etc/sensu/uchiwa.json').to be_mode '640'
-    expect(file '/etc/sensu/uchiwa.json').to be_owned_by 'uchiwa'
-    expect(file '/etc/sensu/uchiwa.json').to be_grouped_into 'uchiwa'
-  end
+describe 'Configuration' do
+  it_behaves_like 'service'
+  it_behaves_like 'port'
+  it_behaves_like 'configuration file'
 end

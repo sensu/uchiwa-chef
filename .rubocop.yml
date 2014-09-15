@@ -17,3 +17,11 @@ Style/SignalException:
 # Needed for metadata.rb
 Style/SingleSpaceBeforeFirstArg:
   Enabled: false
+
+# Snakes are bad..
+Style/FileName:
+  Enabled: false
+
+# Don't require UTF8
+Style/Encoding:
+  Enabled: false
