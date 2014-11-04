@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: uchiwa
-# Recipe:: package
+# Recipe:: repo
 #
 # Copyright (C) 2014 Jean-Francois Theroux
 #

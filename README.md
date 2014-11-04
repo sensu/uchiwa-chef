@@ -1,4 +1,4 @@
-Installs and configures [Uchiwa](https://github.com/sensu/uchiwa). A NodeJS dashboard for [Sensu](http://sensuapp.org/). This cookbook uses the omnibus packages.
+Installs and configures [Uchiwa](https://github.com/sensu/uchiwa). A simple dashboard for [Sensu](http://sensuapp.org/). This cookbook uses the omnibus packages.
 
 [![Build Status](https://travis-ci.org/sensu/uchiwa-chef.svg)](https://travis-ci.org/sensu/uchiwa-chef)
 
@@ -6,9 +6,9 @@ Installs and configures [Uchiwa](https://github.com/sensu/uchiwa). A NodeJS dash
 
 The cookbook supports the following installation methods:
 
-+ package
-+ source
- 
++ repo (default)
++ http
+
 # Supported plateforms
 
 These plateforms have been tested successfully.

@@ -12,7 +12,7 @@ platforms:
   - name: ubuntu-14.04
 
 suites:
-  - name: package
+  - name: repo
     run_list:
       - recipe[uchiwa::default]
     attributes:
@@ -33,9 +33,9 @@ suites:
             timeout: 5000
           }
         ]
-        install_method: package
+        install_method: repo
 
-  - name: source
+  - name: http
     run_list:
       - recipe[uchiwa::default]
     attributes:
@@ -56,8 +56,8 @@ suites:
             timeout: 5000
           }
         ]
-        install_method: source
-        version: 0.2.3
+        install_method: http
+        version: 0.3.0.beta.3-1
 
   - name: disabled_service
     excludes:
@@ -84,5 +84,5 @@ suites:
             timeout: 5000
           }
         ]
-        install_method: package
+        install_method: repo
         manage_service: false
