@@ -41,7 +41,10 @@ else
   raise "Unsupported platform family #{node['platform_family']}. Aborting."
 end
 
+package_options = node['uchiwa']['package_options']
+package_options.concat!(['--nogpgcheck']) if node['platform_family'] == 'rhel'
+
 package 'uchiwa' do
-  options '--nogpgcheck' if node['platform_family'] == 'rhel'
+  options package_options.sort.join(' ')
   version node['uchiwa']['version']
 end
