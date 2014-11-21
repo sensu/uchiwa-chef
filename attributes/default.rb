@@ -9,6 +9,7 @@ default['uchiwa']['owner'] = 'uchiwa'
 default['uchiwa']['group'] = 'uchiwa'
 default['uchiwa']['sensu_homedir'] = '/etc/sensu'
 default['uchiwa']['add_repo'] = true
+default['uchiwa']['package_options'] = ['']
 
 # Set to false if you want to wrap this with runit or another process monitor
 default['uchiwa']['manage_service'] = true
