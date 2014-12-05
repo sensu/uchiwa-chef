@@ -25,6 +25,7 @@ These plateforms have been tested successfully.
 + Make sure 'rubocop' runs without errors.
 + Write tests for your change.
 
-# Author
+# Authors
 
+Author:: Justin Kolberg (<amd.prophet@gmail.com>)
 Author:: Jean-Francois Theroux (<me@failshell.io>)
