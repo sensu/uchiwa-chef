@@ -27,5 +27,5 @@ These plateforms have been tested successfully.
 
 # Authors
 
-Author:: Justin Kolberg (<amd.prophet@gmail.com>)
-Author:: Jean-Francois Theroux (<me@failshell.io>)
+* Author: Justin Kolberg (<amd.prophet@gmail.com>)
+* Author: Jean-Francois Theroux (<me@failshell.io>)
