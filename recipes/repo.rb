@@ -51,6 +51,8 @@ else
   raise "Unsupported platform family #{platform_family}. Aborting."
 end
 
+package_options = node['uchiwa']['package_options'] || package_options
+
 package 'uchiwa' do
   options package_options
   version node['uchiwa']['version']
