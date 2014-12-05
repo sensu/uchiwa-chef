@@ -23,7 +23,7 @@ platform_version = node.platform_version.to_i
 
 case platform_family
 when 'debian'
-  package_options << '--force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew"'
+  package_options = '--force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew"'
 
   include_recipe 'apt'
 
@@ -35,7 +35,7 @@ when 'debian'
     only_if { node['uchiwa']['add_repo'] }
   end
 when 'rhel'
-  package_options << '--nogpgcheck'
+  package_options = '--nogpgcheck'
   branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
 
   # Packages are only built for Centos/RHEL 6
