@@ -16,8 +16,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-case node['platform_family']
+package_options = ''
+
+platform_family = node.platform_family
+platform_version = node.platform_version.to_i
+
+case platform_family
 when 'debian'
+  package_options << '--force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew"'
+
+  include_recipe 'apt'
+
   apt_repository 'sensu' do
     uri node['uchiwa']['apt_repo_url']
     key "#{node['uchiwa']['apt_repo_url']}/pubkey.gpg"
@@ -26,10 +35,11 @@ when 'debian'
     only_if { node['uchiwa']['add_repo'] }
   end
 when 'rhel'
+  package_options << '--nogpgcheck'
   branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
 
   # Packages are only built for Centos/RHEL 6
-  raise "Unsupported platform version #{version}. Aborting." if node['platform_version'].to_i < 6
+  raise "Unsupported platform version #{platform_version}. Aborting." if platform_version < 6
 
   yum_repository 'uchiwa' do
     description 'Uchiwa repository'
@@ -38,13 +48,10 @@ when 'rhel'
     only_if { node['uchiwa']['add_repo'] }
   end
 else
-  raise "Unsupported platform family #{node['platform_family']}. Aborting."
+  raise "Unsupported platform family #{platform_family}. Aborting."
 end
 
-package_options = node['uchiwa']['package_options']
-package_options.concat!(['--nogpgcheck']) if node['platform_family'] == 'rhel'
-
 package 'uchiwa' do
-  options package_options.sort.join(' ')
+  options package_options
   version node['uchiwa']['version']
 end
