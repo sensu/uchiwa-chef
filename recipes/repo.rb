@@ -18,7 +18,7 @@
 
 package_options = ''
 
-platform_family = node['platform']['family']
+platform_family = node['platform_family']
 platform_version = node['platform_version'].to_i
 
 case platform_family
