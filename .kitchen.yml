@@ -79,3 +79,26 @@ suites:
       uchiwa:
         install_method: repo
         package_options: -o Dpkg::Options::="--log=/tmp/uchiwa_pkg.log"
+
+  - name: package_options_centos_http
+    excludes:
+      - ubuntu-12.04
+      - ubuntu-14.04
+    run_list:
+      - recipe[uchiwa::default]
+    attributes:
+      uchiwa:
+        install_method: http
+        version: 0.3.0.beta.3-1
+        package_options: --nogpgcheck > /tmp/uchiwa_pkg.log
+
+  - name: package_options_centos_repo
+    excludes:
+      - ubuntu-12.04
+      - ubuntu-14.04
+    run_list:
+      - recipe[uchiwa::default]
+    attributes:
+      uchiwa:
+        install_method: repo
+        package_options: --nogpgcheck > /tmp/uchiwa_pkg.log
