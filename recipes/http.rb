@@ -23,10 +23,10 @@ when 'debian'
   package_options = node['uchiwa']['package_options'] || '--force-confdef --force-confnew'
 
   arch = if node['kernel']['machine'] == 'x86_64'
-           'amd64'
-         else
-           'i386'
-         end
+    'amd64'
+  else
+    'i386'
+  end
 
   pkg = "uchiwa_#{node['uchiwa']['version']}_#{arch}.deb"
   url = "#{node['uchiwa']['http_url']}/#{pkg}"
@@ -43,10 +43,10 @@ when 'rhel'
   package_options = node['uchiwa']['package_options'] || '--nogpgcheck'
 
   arch = if node['kernel']['machine'] == 'i686'
-           'i386'
-         else
-           node['kernel']['machine']
-         end
+    'i386'
+  else
+    node['kernel']['machine']
+  end
 
   pkg = "uchiwa-#{node['uchiwa']['version']}.#{arch}.rpm"
   url = "#{node['uchiwa']['http_url']}/#{pkg}"
