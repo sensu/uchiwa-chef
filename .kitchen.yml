@@ -3,7 +3,25 @@ driver:
   name: vagrant
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
+  attributes:
+    uchiwa:
+      api: [
+        {
+          name: sensu1,
+          host: api1.example.com,
+          port: 4567,
+          ssl: false,
+          timeout: 5000
+        },
+        {
+          name: sensu2,
+          host: api2.example.com,
+          port: 4567,
+          ssl: false,
+          timeout: 5000
+        }
+      ]
 
 platforms:
   - name: centos-6.5
@@ -17,22 +35,6 @@ suites:
       - recipe[uchiwa::default]
     attributes:
       uchiwa:
-        api: [
-          {
-            name: sensu1,
-            host: api1.example.com,
-            port: 4567,
-            ssl: false,
-            timeout: 5000
-          },
-          {
-            name: sensu2,
-            host: api2.example.com,
-            port: 4567,
-            ssl: false,
-            timeout: 5000
-          }
-        ]
         install_method: repo
 
   - name: http
@@ -40,22 +42,6 @@ suites:
       - recipe[uchiwa::default]
     attributes:
       uchiwa:
-        api: [
-          {
-            name: sensu1,
-            host: api1.example.com,
-            port: 4567,
-            ssl: false,
-            timeout: 5000
-          },
-          {
-            name: sensu2,
-            host: api2.example.com,
-            port: 4567,
-            ssl: false,
-            timeout: 5000
-          }
-        ]
         install_method: http
         version: 0.3.0.beta.3-1
 
@@ -68,21 +54,51 @@ suites:
       - recipe[uchiwa::default]
     attributes:
       uchiwa:
-        api: [
-          {
-            name: sensu1,
-            host: api1.example.com,
-            port: 4567,
-            ssl: false,
-            timeout: 5000
-          },
-          {
-            name: sensu2,
-            host: api2.example.com,
-            port: 4567,
-            ssl: false,
-            timeout: 5000
-          }
-        ]
         install_method: repo
         manage_service: false
+
+  - name: package_options_ubuntu_http
+    excludes:
+      - centos-6.5
+      - centos-7.0
+    run_list:
+      - recipe[uchiwa::default]
+    attributes:
+      uchiwa:
+        install_method: http
+        version: 0.3.0.beta.3-1
+        package_options: --log=/tmp/uchiwa_pkg.log
+
+  - name: package_options_ubuntu_repo
+    excludes:
+      - centos-6.5
+      - centos-7.0
+    run_list:
+      - recipe[uchiwa::default]
+    attributes:
+      uchiwa:
+        install_method: repo
+        package_options: -o Dpkg::Options::="--log=/tmp/uchiwa_pkg.log"
+
+  - name: package_options_centos_http
+    excludes:
+      - ubuntu-12.04
+      - ubuntu-14.04
+    run_list:
+      - recipe[uchiwa::default]
+    attributes:
+      uchiwa:
+        install_method: http
+        version: 0.3.0.beta.3-1
+        package_options: --nogpgcheck > /tmp/uchiwa_pkg.log
+
+  - name: package_options_centos_repo
+    excludes:
+      - ubuntu-12.04
+      - ubuntu-14.04
+    run_list:
+      - recipe[uchiwa::default]
+    attributes:
+      uchiwa:
+        install_method: repo
+        package_options: --nogpgcheck > /tmp/uchiwa_pkg.log

@@ -16,14 +16,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-case node['platform_family']
+platform_family = node['platform_family']
+
+case platform_family
 when 'debian'
-  if node['kernel']['machine'] == 'x86_64'
-    arch = '_amd64'
+  package_options = node['uchiwa']['package_options'] || '--force-confdef --force-confnew'
+
+  arch = if node['kernel']['machine'] == 'x86_64'
+    'amd64'
   else
-    arch = '_i386'
+    'i386'
   end
-  pkg = "uchiwa_#{node['uchiwa']['version']}#{arch}.deb"
+
+  pkg = "uchiwa_#{node['uchiwa']['version']}_#{arch}.deb"
   url = "#{node['uchiwa']['http_url']}/#{pkg}"
 
   remote_file "#{Chef::Config[:file_cache_path]}/#{pkg}" do
@@ -31,15 +36,19 @@ when 'debian'
   end
 
   dpkg_package pkg do
+    options package_options
     source "#{Chef::Config[:file_cache_path]}/#{pkg}"
   end
 when 'rhel'
-  if node['kernel']['machine'] == 'i686'
-    arch = '.i386'
+  package_options = node['uchiwa']['package_options'] || '--nogpgcheck'
+
+  arch = if node['kernel']['machine'] == 'i686'
+    'i386'
   else
-    arch = ".#{node['kernel']['machine']}"
+    node['kernel']['machine']
   end
-  pkg = "uchiwa-#{node['uchiwa']['version']}#{arch}.rpm"
+
+  pkg = "uchiwa-#{node['uchiwa']['version']}.#{arch}.rpm"
   url = "#{node['uchiwa']['http_url']}/#{pkg}"
 
   remote_file "#{Chef::Config[:file_cache_path]}/#{pkg}" do
@@ -47,7 +56,7 @@ when 'rhel'
   end
 
   package pkg do
-    options '--nogpgcheck'
+    options package_options
     source "#{Chef::Config[:file_cache_path]}/#{pkg}"
   end
 else

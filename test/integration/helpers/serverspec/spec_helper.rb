@@ -1,6 +1,6 @@
 require 'serverspec'
-include Serverspec::Helper::Exec
-include SpecInfra::Helper::DetectOS
+
+set :backend, :exec
 
 shared_examples_for 'service' do
   it 'Enables and starts the Uchiwa service' do
