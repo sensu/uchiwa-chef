@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Installation' do
   it 'Has the uchiwa packaged installed' do
-    expect(package 'uchiwa').to be_installed.with_version('0.2.6-1')
+    expect(package 'uchiwa').to be_installed.with_version('0.4.0-1')
   end
 end
 
