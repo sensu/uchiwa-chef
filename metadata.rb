@@ -8,7 +8,6 @@ version          '1.0.0'
 
 depends          'yum'
 depends          'apt'
-depends          'nodejs'
 
 %w(
   ubuntu
