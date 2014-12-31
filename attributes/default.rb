@@ -7,7 +7,7 @@ default['uchiwa']['use_unstable_repo'] = false
 default['uchiwa']['http_url'] = 'http://dl.bintray.com/palourde/uchiwa'
 default['uchiwa']['owner'] = 'uchiwa'
 default['uchiwa']['group'] = 'uchiwa'
-default['uchiwa']['uchiwa_homedir'] = '/etc/sensu'
+default['uchiwa']['uchiwa_homedir'] = '/opt/uchiwa'
 default['uchiwa']['add_repo'] = true
 default['uchiwa']['package_options'] = nil
 
