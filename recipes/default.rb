@@ -33,6 +33,14 @@ template "#{node['uchiwa']['uchiwa_homedir']}/uchiwa.json" do
   variables(:config => JSON.pretty_generate(config))
 end
 
+template '/etc/init.d/uchiwa' do
+  source 'init_uchiwa'
+  mode 0755
+  user 'root'
+  group 'root'
+  notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
+end
+
 service 'uchiwa' do
   action [:enable, :start] if node['uchiwa']['manage_service']
 end
