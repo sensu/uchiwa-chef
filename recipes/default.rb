@@ -34,7 +34,7 @@ template "#{node['uchiwa']['uchiwa_homedir']}/uchiwa.json" do
 end
 
 template '/etc/init.d/uchiwa' do
-  source 'init_uchiwa'
+  source 'init_uchiwa.erb'
   mode 0755
   user 'root'
   group 'root'
