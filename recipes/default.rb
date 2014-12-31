@@ -25,7 +25,7 @@ node['uchiwa']['settings'].each do |k, v|
 end
 config = { 'uchiwa' => settings, 'sensu' => node['uchiwa']['api'] }
 
-template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
+template "#{node['uchiwa']['uchiwa_homedir']}/uchiwa.json" do
   user node['uchiwa']['owner']
   group node['uchiwa']['group']
   mode 0640
