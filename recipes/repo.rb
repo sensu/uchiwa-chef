@@ -56,4 +56,5 @@ package_options = node['uchiwa']['package_options'] || package_options
 package 'uchiwa' do
   options package_options
   version node['uchiwa']['version']
+  notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
 end

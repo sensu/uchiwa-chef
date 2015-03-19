@@ -38,6 +38,7 @@ when 'debian'
   dpkg_package pkg do
     options package_options
     source "#{Chef::Config[:file_cache_path]}/#{pkg}"
+    notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
   end
 when 'rhel'
   package_options = node['uchiwa']['package_options'] || '--nogpgcheck'
@@ -58,6 +59,7 @@ when 'rhel'
   package pkg do
     options package_options
     source "#{Chef::Config[:file_cache_path]}/#{pkg}"
+    notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
   end
 else
   raise "Unsupported platform family #{node['platform_family']}. Aborting."
