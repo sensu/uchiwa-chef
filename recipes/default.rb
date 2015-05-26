@@ -23,7 +23,7 @@ settings = {}
 node['uchiwa']['settings'].each do |k, v|
   settings[k] = v
 end
-config = { 'uchiwa' => settings, 'sensu' => node['uchiwa']['api'] }
+config = { 'uchiwa' => settings, 'sensu' => [ node['uchiwa']['api'] ] }
 
 template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
   user node['uchiwa']['owner']
