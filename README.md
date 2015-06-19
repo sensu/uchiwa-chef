@@ -9,9 +9,23 @@ The cookbook supports the following installation methods:
 + repo (default)
 + http
 
-# Supported plateforms
+# Attributes
 
-These plateforms have been tested successfully.
+You can change the following attributes to configure uchiwa:
+
+```
+default['uchiwa']['settings']['user'] = 'admin'
+default['uchiwa']['settings']['pass'] = 'supersecret'
+default['uchiwa']['settings']['refresh'] = 5
+default['uchiwa']['settings']['host'] = '0.0.0.0'
+default['uchiwa']['settings']['port'] = 3000
+```
+
+> To disable authentication on uchiwa, set user and pass to *nil*
+
+# Supported platforms
+
+These platforms have been tested successfully.
 
 + Centos/RHEL 6 and 7 x86_64
 + Ubuntu 12.04 and 14.04 amd64

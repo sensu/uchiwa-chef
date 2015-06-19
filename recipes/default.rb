@@ -23,6 +23,15 @@ settings = {}
 node['uchiwa']['settings'].each do |k, v|
   settings[k] = v
 end
+
+# if the user or pass keys are nil, then
+# authentication will be disabled (by not
+# setting the user/pass parameters)
+if settings['user'].nil? or settings['pass'].nil? then
+  settings.delete('user')
+  settings.delete('pass')
+end
+
 config = { 'uchiwa' => settings, 'sensu' => node['uchiwa']['api'] }
 
 template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
