@@ -9,7 +9,7 @@ The cookbook supports the following installation methods:
 + repo (default)
 + http
 
-# Supported plateforms
+# Supported platforms
 
 These plateforms have been tested successfully.
 
