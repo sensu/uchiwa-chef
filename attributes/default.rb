@@ -1,5 +1,5 @@
 # Global
-default['uchiwa']['version'] = '0.12.0-1'
+default['uchiwa']['version'] = '0.12.1-1'
 default['uchiwa']['install_method'] = 'repo'
 default['uchiwa']['apt_repo_url'] = 'http://repositories.sensuapp.org/apt'
 default['uchiwa']['yum_repo_url'] = 'http://repositories.sensuapp.org'
