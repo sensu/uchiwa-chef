@@ -23,7 +23,29 @@ settings = {}
 node['uchiwa']['settings'].each do |k, v|
   settings[k] = v
 end
-config = { 'uchiwa' => settings, 'sensu' => node['uchiwa']['api'] }
+
+api_settings = node['uchiwa']['api']
+
+# Retrieve the data bag config
+data_bag_name = node['uchiwa']['data_bag']['name']
+config_item = node['uchiwa']['data_bag']['config_item']
+
+uchiwa_config = Uchiwa::Helpers.data_bag_item(data_bag_name, config_item, true)
+
+if uchiwa_config
+  # If any data bag settings exists, merge them with the node attribute settings
+  if uchiwa_config['settings']
+    merged_settings = Chef::Mixin::DeepMerge.merge(uchiwa_config['settings'], settings.to_hash)
+    settings = merged_settings
+  end
+
+  # If the data bag is used for api settings, override the node attributes
+  if uchiwa_config['api']
+    api_settings = uchiwa_config['api']
+  end
+end
+
+config = {'uchiwa' => settings, 'sensu' => api_settings}
 
 template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
   user node['uchiwa']['owner']

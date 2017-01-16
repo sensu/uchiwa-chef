@@ -29,4 +29,14 @@ shared_examples_for 'configuration file' do
     expect(file '/etc/sensu/uchiwa.json').to be_owned_by 'uchiwa'
     expect(file '/etc/sensu/uchiwa.json').to be_grouped_into 'uchiwa'
   end
+  # Make sure we wrote the config files to disk
+  describe file('/etc/sensu/uchiwa.json') do
+    its(:content) { should contain 'name' }
+    its(:content) { should contain 'host' }
+    its(:content) { should contain 'port' }
+    its(:content) { should contain 'ssl' }
+    its(:content) { should contain 'timeout' }
+  end
+
+
 end
