@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "encrypted_data": "X38NtwomNjMc0TZ69e9F3liakDtQcoQa1G9ckgG4YOkyAnPlh1KKUTSmL82i\nmgVuhodC5CkqpL9YJLQdP27cVZCtrCFQPE5FArnNvykZ7/zbdHmivu9UVHUb\nuwX5awAweVRL86trjgf2mS+zgJyZpR/h4vTcupYk6Uu8HhGxRDM=\n",
+    "iv": "5Ls8fW9duziCa4nRbsBLgw==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "api": {
+    "encrypted_data": "WK9Qw2QWiUzf9mfWIRB9hDp9Mxx/dvpUqqvrF65tNyQMp7djdIAgM7ugDYv4\n5WWfNp1wYWLRXqM61sicV5/yEiHSaT+J/pvH0uD6+yQtR/PpAChoLYzabxSu\n5WrGZP1RhPjIvOH+5oYTMZMOCgXuWIpQywhbaL1Qo/Gx9VH3L06p7x3NWD7B\nxZ4yLjFzPWf2A1abgO5X39s8lv39vZhpWIt6PNiDuIYZxmyRsr+KsLwizCDv\n3rCsgm+O3z4n3oZ8AT3RY3s7WGsisu32Ab8MtA==\n",
+    "iv": "vvy3UhWFpV4VgwLMHAwDOA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "id": "config"
+}

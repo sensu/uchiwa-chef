@@ -32,3 +32,7 @@ default['uchiwa']['api'] = [
     'timeout' => 5
   }
 ]
+
+# data bag
+default['uchiwa']['data_bag']['name'] = 'uchiwa'
+default['uchiwa']['data_bag']['config_item'] = 'config'

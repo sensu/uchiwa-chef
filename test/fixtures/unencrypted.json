@@ -1,0 +1,30 @@
+{
+  "settings": {
+    "users": [
+      {
+        "username": "kitchen_user",
+        "password": "kitchen_password",
+        "role": {
+          "readonly": false
+        }
+      }
+    ]
+  },
+  "api": [
+    {
+      "name": "sensu_kitchen1",
+      "host": "api1.example.com",
+      "port": 4567,
+      "ssl": false,
+      "timeout": 5000
+    },
+    {
+      "name": "sensu_kitchen2",
+      "host": "api2.example.com",
+      "port": 4567,
+      "ssl": false,
+      "timeout": 5000
+    }
+  ],
+  "id": "config"
+}
