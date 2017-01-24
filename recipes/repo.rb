@@ -43,7 +43,7 @@ when 'rhel'
 
   yum_repository 'uchiwa' do
     description 'Uchiwa repository'
-    baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/6/$basearch/"
+    baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/$basearch/"
     gpgcheck false
     only_if { node['uchiwa']['add_repo'] }
   end
