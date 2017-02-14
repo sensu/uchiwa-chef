@@ -30,7 +30,7 @@ when 'debian'
   apt_repository 'sensu' do
     uri node['uchiwa']['apt_repo_url']
     key "#{node['uchiwa']['apt_repo_url']}/pubkey.gpg"
-    distribution 'sensu'
+    distribution node['lsb']['codename']
     components node['uchiwa']['use_unstable_repo'] ? ['unstable'] : ['main']
     only_if { node['uchiwa']['add_repo'] }
   end
@@ -38,12 +38,9 @@ when 'rhel'
   package_options = '--nogpgcheck'
   branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
 
-  # Packages are only built for Centos/RHEL 6
-  raise "Unsupported platform version #{platform_version}. Aborting." if platform_version < 6
-
   yum_repository 'uchiwa' do
     description 'Uchiwa repository'
-    baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/6/$basearch/"
+    baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/$releasever/$basearch/"
     gpgcheck false
     only_if { node['uchiwa']['add_repo'] }
   end
