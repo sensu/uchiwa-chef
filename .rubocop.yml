@@ -15,7 +15,7 @@ Style/SignalException:
   Enabled: false
 
 # Needed for metadata.rb
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 
 # Snakes are bad..

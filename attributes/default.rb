@@ -3,6 +3,7 @@ default['uchiwa']['version'] = '0.12.1-1'
 default['uchiwa']['install_method'] = 'repo'
 default['uchiwa']['apt_repo_url'] = 'http://repositories.sensuapp.org/apt'
 default['uchiwa']['yum_repo_url'] = 'http://repositories.sensuapp.org'
+default['uchiwa']['yum_repo_url_suffix'] = nil
 default['uchiwa']['use_unstable_repo'] = false
 default['uchiwa']['http_url'] = 'http://dl.bintray.com/palourde/uchiwa'
 default['uchiwa']['owner'] = 'uchiwa'

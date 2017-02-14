@@ -37,13 +37,11 @@ when 'debian'
 when 'rhel'
   package_options = '--nogpgcheck'
   branch = node['uchiwa']['use_unstable_repo'] ? 'yum-unstable' : 'yum'
-
-  # Packages are only built for Centos/RHEL 6
-  raise "Unsupported platform version #{platform_version}. Aborting." if platform_version < 6
+  suffix = node['uchiwa']['yum_repo_url_suffix'].nil? ? "#{branch}/el/#{platform_version}/$basearch/" : node['uchiwa']['yum_repo_url_suffix']
 
   yum_repository 'uchiwa' do
     description 'Uchiwa repository'
-    baseurl "#{node['uchiwa']['yum_repo_url']}/#{branch}/el/6/$basearch/"
+    baseurl "#{node['uchiwa']['yum_repo_url']}/#{suffix}"
     gpgcheck false
     only_if { node['uchiwa']['add_repo'] }
   end
@@ -57,4 +55,8 @@ package 'uchiwa' do
   options package_options
   version node['uchiwa']['version']
   notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
+end
+
+service 'uchiwa' do
+  action :nothing
 end

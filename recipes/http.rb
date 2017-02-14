@@ -64,3 +64,7 @@ when 'rhel'
 else
   raise "Unsupported platform family #{node['platform_family']}. Aborting."
 end
+
+service 'uchiwa' do
+  action :nothing
+end

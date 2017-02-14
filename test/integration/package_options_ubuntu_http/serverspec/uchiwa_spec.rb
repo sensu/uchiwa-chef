@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe 'Installation' do
   it 'Has the uchiwa packaged installed' do
-    expect(package 'uchiwa').to be_installed
+    expect(package('uchiwa')).to be_installed
   end
 
   it 'Created a package log file' do
-    expect(file '/tmp/uchiwa_pkg.log').to be_file
+    expect(file('/tmp/uchiwa_pkg.log')).to be_file
   end
 end
 

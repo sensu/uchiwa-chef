@@ -1,7 +1,23 @@
-language: ruby
-rvm:
-  - 2.0.0
-install: gem install foodcritic rubocop
+# install the stable release of the Chef Development Kit (ChefDK)
+# use chef-current-precise to install the pre-release
+addons:
+  apt:
+    sources:
+      - chef-stable-precise
+    packages:
+      - chefdk
+    code_climate:
+        repo_token: abe55c34d937fb17eaa7d459e20ad0e1359108d704eef0490a55c471c2bafb88
+
+services: docker
+
+# https://docs.travis-ci.com/user/customizing-the-build/#Skipping-the-Installation-Step
+install: true
+
+before_script:
+  - eval "$(/opt/chefdk/bin/chef shell-init bash)" # make ChefDK's Ruby the default
+  - chef --version
+  - chef exec berks install
+
 script:
- - foodcritic -f any .
- - rubocop
+ - chef exec rake default
