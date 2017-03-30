@@ -5,7 +5,7 @@ set :backend, :exec
 shared_examples_for 'service' do
   it 'Enables and starts the Uchiwa service' do
     expect(service 'uchiwa').to be_enabled
-    expect(service 'uchiwa').to be_running
+    expect(service 'uchiwa').to be_running.under('init')
   end
 end
 

@@ -43,7 +43,7 @@ suites:
     attributes:
       uchiwa:
         install_method: http
-        version: 0.12.0-1
+        version: 0.23.1-1
 
   - name: disabled_service
     excludes:
@@ -66,7 +66,7 @@ suites:
     attributes:
       uchiwa:
         install_method: http
-        version: 0.12.0-1
+        version: 0.23.1-1
         package_options: --log=/tmp/uchiwa_pkg.log
 
   - name: package_options_ubuntu_repo
@@ -89,7 +89,7 @@ suites:
     attributes:
       uchiwa:
         install_method: http
-        version: 0.12.0-1
+        version: 0.23.1-1
         package_options: --nogpgcheck > /tmp/uchiwa_pkg.log
 
   - name: package_options_centos_repo
