@@ -24,8 +24,8 @@ provisioner:
       ]
 
 platforms:
-  - name: centos-6.5
-  - name: centos-7.0
+  - name: centos-6.7
+  - name: centos-7.3
   - name: ubuntu-12.04
   - name: ubuntu-14.04
 
@@ -43,11 +43,11 @@ suites:
     attributes:
       uchiwa:
         install_method: http
-        version: 0.12.0-1
+        version: 0.23.1-1
 
   - name: disabled_service
     excludes:
-      - centos-7.0
+      - centos-7.3
       - ubuntu-12.04
       - ubuntu-14.04
     run_list:
@@ -59,20 +59,20 @@ suites:
 
   - name: package_options_ubuntu_http
     excludes:
-      - centos-6.5
-      - centos-7.0
+      - centos-6.7
+      - centos-7.3
     run_list:
       - recipe[uchiwa::default]
     attributes:
       uchiwa:
         install_method: http
-        version: 0.12.0-1
+        version: 0.23.1-1
         package_options: --log=/tmp/uchiwa_pkg.log
 
   - name: package_options_ubuntu_repo
     excludes:
-      - centos-6.5
-      - centos-7.0
+      - centos-6.7
+      - centos-7.3
     run_list:
       - recipe[uchiwa::default]
     attributes:
@@ -89,7 +89,7 @@ suites:
     attributes:
       uchiwa:
         install_method: http
-        version: 0.12.0-1
+        version: 0.23.1-1
         package_options: --nogpgcheck > /tmp/uchiwa_pkg.log
 
   - name: package_options_centos_repo
