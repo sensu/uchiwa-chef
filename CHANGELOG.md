@@ -2,6 +2,11 @@ uchiwa Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the uchiwa cookbook.
 
+v1.3.0 (2017-04-11)
+-------------------
+- Bump default Uchiwa version to 0.23.1
+- Use new repository layout (releasever & codename)
+
 v1.2.0 (2015-11-21)
 -------------------
 - Bump default Uchiwa version to 0.12.1
