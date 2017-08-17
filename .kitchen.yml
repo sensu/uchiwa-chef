@@ -24,7 +24,7 @@ provisioner:
       ]
 
 platforms:
-  - name: centos-6.7
+  - name: centos-6.9
   - name: centos-7.3
   - name: ubuntu-12.04
   - name: ubuntu-14.04
@@ -59,7 +59,7 @@ suites:
 
   - name: package_options_ubuntu_http
     excludes:
-      - centos-6.7
+      - centos-6.9
       - centos-7.3
     run_list:
       - recipe[uchiwa::default]
@@ -71,7 +71,7 @@ suites:
 
   - name: package_options_ubuntu_repo
     excludes:
-      - centos-6.7
+      - centos-6.9
       - centos-7.3
     run_list:
       - recipe[uchiwa::default]
