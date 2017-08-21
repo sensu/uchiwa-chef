@@ -21,14 +21,5 @@ default['uchiwa']['settings']['refresh'] = 5
 default['uchiwa']['settings']['host'] = '0.0.0.0'
 default['uchiwa']['settings']['port'] = 3000
 
-# APIs Settings
-default['uchiwa']['api'] = [
-  {
-    'name' => 'Sensu',
-    'host' => '127.0.0.1',
-    'url' => 'http://127.0.0.1:4567',
-    'path' => '',
-    'ssl' => false,
-    'timeout' => 5
-  }
-]
+# Sensu Datacenters
+default['uchiwa']['datacenters'] = []

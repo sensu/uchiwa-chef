@@ -18,20 +18,11 @@
 
 include_recipe "uchiwa::#{node['uchiwa']['install_method']}"
 
-# Generate config file
-settings = {}
-node['uchiwa']['settings'].each do |k, v|
-  settings[k] = v
+if node["uchiwa"]["datacenters"].empty?
+  uchiwa_sensu_datacenter "Sensu"
 end
-config = { 'uchiwa' => settings, 'sensu' => node['uchiwa']['api'] }
 
-template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
-  user node['uchiwa']['owner']
-  group node['uchiwa']['group']
-  mode 0640
-  notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
-  variables(:config => JSON.pretty_generate(config))
-end
+uchiwa_config node.name
 
 service 'uchiwa' do
   action [:enable, :start] if node['uchiwa']['manage_service']

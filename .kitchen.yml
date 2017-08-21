@@ -6,7 +6,7 @@ provisioner:
   name: chef_zero
   attributes:
     uchiwa:
-      api: [
+      datacenters: [
         {
           name: sensu1,
           host: api1.example.com,
