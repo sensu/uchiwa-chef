@@ -2,6 +2,10 @@ uchiwa Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the uchiwa cookbook.
 
+v1.4.0 (2017-09-16)
+-------------------
+- add the ability to optionally store uchiwa settings in a databag (supports encrypted data bags)
+
 v1.3.0 (2017-04-11)
 -------------------
 - Bump default Uchiwa version to 0.23.1
