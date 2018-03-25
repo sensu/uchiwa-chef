@@ -47,12 +47,20 @@ end
 
 config = {'uchiwa' => settings, 'sensu' => api_settings}
 
-template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
+template "#{node['uchiwa']['uchiwa_homedir']}/uchiwa.json" do
   user node['uchiwa']['owner']
   group node['uchiwa']['group']
   mode 0640
   notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
   variables(:config => JSON.pretty_generate(config))
+end
+
+template '/etc/init.d/uchiwa' do
+  source 'init_uchiwa.erb'
+  mode 0755
+  user 'root'
+  group 'root'
+  notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
 end
 
 service 'uchiwa' do
