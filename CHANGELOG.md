@@ -42,10 +42,10 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 - Allow default package options to be overridden
 
 
-[Unreleased]: https://github.com/sensu/sensu-uchiwa/compare/v1.5.0...HEAD
-[v1.5.0]: https://github.com/sensu/sensu-uchiwa/compare/v1.4.0...v1.5.0
-[v1.4.0]: https://github.com/sensu/sensu-uchiwa/compare/v1.3.0...v1.4.0
-[v1.3.0]: https://github.com/sensu/sensu-uchiwa/compare/v1.2.0...v1.3.0
-[v1.2.0]: https://github.com/sensu/sensu-uchiwa/compare/v1.1.0...v1.2.0
-[v1.1.0]: https://github.com/sensu/sensu-uchiwa/compare/v1.0.0...v1.1.0
-[v1.0.0]: https://github.com/sensu/sensu-uchiwa/compare/v0.7.0...v1.0.0
+[Unreleased]: https://github.com/sensu/uchiwa-chef/compare/v1.5.0...HEAD
+[v1.5.0]: https://github.com/sensu/uchiwa-chef/compare/v1.4.0...v1.5.0
+[v1.4.0]: https://github.com/sensu/uchiwa-chef/compare/1.3.0...v1.4.0
+[v1.3.0]: https://github.com/sensu/uchiwa-chef/compare/1.2.0...1.3.0
+[v1.2.0]: https://github.com/sensu/uchiwa-chef/compare/1.1.0...1.2.0
+[v1.1.0]: https://github.com/sensu/uchiwa-chef/compare/1.0.0...1.1.0
+[v1.0.0]: https://github.com/sensu/uchiwa-chef/compare/0.7.0...1.0.0
