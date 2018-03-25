@@ -2,6 +2,10 @@ uchiwa Cookbook CHANGELOG
 =========================
 This file is used to list changes made in each version of the uchiwa cookbook.
 
+## [Unreleased]
+### Added
+- `libraries/uchiwa_helpers.rb`: Add the ability to store settings in chef-vault
+
 v1.4.0 (2017-09-16)
 -------------------
 - add the ability to optionally store uchiwa settings in a databag (supports encrypted data bags)

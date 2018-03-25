@@ -8,6 +8,7 @@ version          '1.4.0'
 
 depends          'yum'
 depends          'apt'
+depends 'chef-vault', '>= 1.3.1'
 
 %w(
   ubuntu
