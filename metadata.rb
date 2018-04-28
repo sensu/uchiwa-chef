@@ -6,8 +6,6 @@ description      'Installs/Configures uchiwa'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.5.0'
 
-depends          'yum'
-depends          'apt'
 depends 'chef-vault', '>= 1.3.1'
 
 %w(
@@ -23,4 +21,4 @@ end
 
 source_url 'https://github.com/sensu/uchiwa-chef'
 issues_url 'https://github.com/sensu/uchiwa-chef/issues'
-chef_version '>= 12.1' if respond_to?(:chef_version)
+chef_version '>= 12.14' if respond_to?(:chef_version)

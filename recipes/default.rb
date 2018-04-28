@@ -50,7 +50,7 @@ config = {'uchiwa' => settings, 'sensu' => api_settings}
 template "#{node['uchiwa']['sensu_homedir']}/uchiwa.json" do
   user node['uchiwa']['owner']
   group node['uchiwa']['group']
-  mode 0640
+  mode '0640'
   notifies :restart, 'service[uchiwa]' if node['uchiwa']['manage_service']
   variables(:config => JSON.pretty_generate(config))
 end
