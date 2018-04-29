@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 
+## [v2.0.0] - 2018-04-29
+### Breaking Change
+- now requires at least `chef-client >= 12.14` and removes the dependency on `apt` and `yum` cookbooks as they are now chef official resources (@tas50)
+
 ## [v1.5.0] - 2018-03-25
 ### Added
 - `libraries/uchiwa_helpers.rb`: Add the ability to store settings in chef-vault
@@ -43,6 +47,7 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 
 [Unreleased]: https://github.com/sensu/uchiwa-chef/compare/v1.5.0...HEAD
+[v2.0.0]: https://github.com/sensu/uchiwa-chef/compare/v1.5.0...v2.0.0
 [v1.5.0]: https://github.com/sensu/uchiwa-chef/compare/v1.4.0...v1.5.0
 [v1.4.0]: https://github.com/sensu/uchiwa-chef/compare/1.3.0...v1.4.0
 [v1.3.0]: https://github.com/sensu/uchiwa-chef/compare/1.2.0...1.3.0
