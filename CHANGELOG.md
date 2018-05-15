@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 
+## [v2.0.0] - 2018-05-14
+### Fixed
+- removed `apt` recipe that is no longer needed see #65, #66 for details (@bleything)
+
 ## [v2.0.0] - 2018-04-29
 ### Breaking Change
 - now requires at least `chef-client >= 12.14` and removes the dependency on `apt` and `yum` cookbooks as they are now chef official resources (@tas50)
@@ -46,7 +50,8 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 - Allow default package options to be overridden
 
 
-[Unreleased]: https://github.com/sensu/uchiwa-chef/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/sensu/uchiwa-chef/compare/v2.0.1...HEAD
+[v2.1.0]: https://github.com/sensu/uchiwa-chef/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/sensu/uchiwa-chef/compare/v1.5.0...v2.0.0
 [v1.5.0]: https://github.com/sensu/uchiwa-chef/compare/v1.4.0...v1.5.0
 [v1.4.0]: https://github.com/sensu/uchiwa-chef/compare/1.3.0...v1.4.0
