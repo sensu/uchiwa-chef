@@ -25,8 +25,6 @@ case platform_family
 when 'debian'
   package_options = '--force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew"'
 
-  include_recipe 'apt'
-
   apt_repository 'sensu' do
     uri node['uchiwa']['apt_repo_url']
     key "#{node['uchiwa']['apt_repo_url']}/pubkey.gpg"
