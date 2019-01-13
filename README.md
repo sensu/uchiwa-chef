@@ -1,6 +1,7 @@
 Installs and configures [Uchiwa](https://github.com/sensu/uchiwa). A simple dashboard for [Sensu](http://sensuapp.org/). This cookbook uses the omnibus packages.
 
 [![Build Status](https://travis-ci.org/sensu/uchiwa-chef.svg)](https://travis-ci.org/sensu/uchiwa-chef)
+[![pullreminders](https://pullreminders.com/badge.svg)](https://pullreminders.com?ref=badge)
 
 # Installation methods
 
