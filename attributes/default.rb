@@ -1,8 +1,8 @@
 # Global
 default['uchiwa']['version'] = '0.23.1-1'
 default['uchiwa']['install_method'] = 'repo'
-default['uchiwa']['apt_repo_url'] = 'http://repositories.sensuapp.org/apt'
-default['uchiwa']['yum_repo_url'] = 'http://repositories.sensuapp.org'
+default['uchiwa']['apt_repo_url'] = 'http://eol-repositories.sensuapp.org/apt'
+default['uchiwa']['yum_repo_url'] = 'http://eol-repositories.sensuapp.org'
 default['uchiwa']['use_unstable_repo'] = false
 default['uchiwa']['http_url'] = 'http://dl.bintray.com/palourde/uchiwa'
 default['uchiwa']['owner'] = 'uchiwa'
