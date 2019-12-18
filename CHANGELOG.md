@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 
+## [v3.0.0] - 2019-12-17
+### Breaking Changes
+- upodated the `apt`, `yum`, and `msi` repo paths to use the [EOL urls](http://eol-repositories.sensuapp.org/) which was announced [here](https://blog.sensu.io/announcing-the-sensu-archives). This is only breaking if you have specific whitelisted URLs for the old repos in an `http(s)` proxy. See [#632](https://github.com/sensu/sensu-chef/pull/632) for more details. (@duncaan)
+
 ## [v2.1.0] - 2018-05-15
 ### Added
 - rescue on `Chef::Exceptions::InvalidDataBagItemID` when a data bag doesn't exist changed (@bleything)
@@ -54,7 +58,8 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 - Allow default package options to be overridden
 
 
-[Unreleased]: https://github.com/sensu/uchiwa-chef/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/sensu/uchiwa-chef/compare/v3.0.0...HEAD
+[v3.0.0]: https://github.com/sensu/uchiwa-chef/compare/v2.1.0...v3.0.0
 [v2.1.0]: https://github.com/sensu/uchiwa-chef/compare/v2.0.1...v2.1.0
 [v2.0.1]: https://github.com/sensu/uchiwa-chef/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/sensu/uchiwa-chef/compare/v1.5.0...v2.0.0
