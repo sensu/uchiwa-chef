@@ -18,6 +18,7 @@ module Uchiwa
     rescue Chef::Exceptions::ValidationFailed,
         Chef::Exceptions::InvalidDataBagPath,
         Chef::Exceptions::InvalidDataBagItemID,
+        ChefVault::Exceptions::ItemNotFound,
         Net::HTTPServerException => error
       missing_ok ? nil : raise(error)
     end
