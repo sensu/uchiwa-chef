@@ -21,7 +21,7 @@ include_recipe "uchiwa::#{node['uchiwa']['install_method']}"
 # Generate config file
 settings = {}
 node['uchiwa']['settings'].each do |k, v|
-  settings[k] = v
+  settings[k] = v unless v.nil?
 end
 
 api_settings = node['uchiwa']['api']
